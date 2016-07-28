@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/FragJage/xPLFictif.svg?branch=master)](https://travis-ci.org/FragJage/xPLFictif)
-[![Coverage Status](https://coveralls.io/repos/github/FragJage/xPLFictif/badge.svg?branch=master)](https://coveralls.io/github/FragJage/xPLFictif?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/FragJage/xPLFictif/badge.svg?branch=master&bust=1)](https://coveralls.io/github/FragJage/xPLFictif?branch=master)
 [![Coverity Scan Build](https://scan.coverity.com/projects/9698/badge.svg)](https://scan.coverity.com/projects/9698)
 xPLFictif
 ===========
@@ -19,8 +19,8 @@ Portability
 ===========
 Unit tests passed successfully on :
  - Windows Seven (CPU Intel Celeron)
- - (TODO) Linux Ubuntu (CPU Intel Atom)
- - (TODO) Linux Raspian on Raspberry Pi (CPU ARM)
+ - Linux Ubuntu (CPU Intel Atom)
+ - Linux Raspian on Raspberry Pi (CPU ARM)
 
 For more informations
 =====================
