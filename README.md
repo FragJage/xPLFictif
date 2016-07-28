@@ -1,6 +1,6 @@
-<<[![Build Status](https://travis-ci.org/FragJage/xPLFictif.svg?branch=master)](https://travis-ci.org/FragJage/xPLFictif)
+[![Build Status](https://travis-ci.org/FragJage/xPLFictif.svg?branch=master)](https://travis-ci.org/FragJage/xPLFictif)
 [![Coverage Status](https://coveralls.io/repos/github/FragJage/xPLFictif/badge.svg?branch=master)](https://coveralls.io/github/FragJage/xPLFictif?branch=master)
-[![Coverity Scan Build](https://scan.coverity.com/projects/xxxx/badge.svg)](https://scan.coverity.com/projects/xxxx)
+[![Coverity Scan Build](https://scan.coverity.com/projects/9698/badge.svg)](https://scan.coverity.com/projects/9698)
 xPLFictif
 ===========
 Fictives sensors for xPL protocol. 
