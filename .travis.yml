@@ -17,7 +17,7 @@ addons:
       name: "FragJage/xPLFictif"
       description: "Fictives sensors for xPL protocol"
     notification_email: inscrip.jage@free.fr
-    build_command_prepend: "cov-configure --comptype g++ --compiler $(which $COMPILER) && cmake . -G'Unix Makefiles' -DCMAKE_CXX_COMPILER=$(which $COMPILER)"
+    build_command_prepend: "cov-configure --comptype g++ --compiler $COMPILER --template && cmake . -G'Unix Makefiles' -DCMAKE_CXX_COMPILER=$(which $COMPILER)"
     build_command: "make"
     branch_pattern: coverity_branch
     
