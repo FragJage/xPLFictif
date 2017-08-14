@@ -26,7 +26,7 @@
 #include <queue>
 #include <string>
 #include <mutex>
-#ifdef WIN32
+#ifndef _GLIBCXX_HAS_GTHREADS
     #include "Thread/mingw.mutex.h"
 #else
     #include <thread>

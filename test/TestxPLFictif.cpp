@@ -15,21 +15,28 @@ TestxPLFictif::TestxPLFictif() : TestClass("xPLFictif", this)
 	addTest("ReStart", &TestxPLFictif::ReStart);
 	addTest("DelAdvConfig", &TestxPLFictif::DelAdvConfig);
 	addTest("ReStop", &TestxPLFictif::ReStop);
+
+    if(remove("config")==0)
+        cout << termcolor::yellow << "Remove old config file" << endl << termcolor::grey;
 }
 
 TestxPLFictif::~TestxPLFictif()
 {
+    if(remove("config")!=0)
+        cout << termcolor::red << "Unable to remove config file" << endl << termcolor::grey;
 }
 
 void TestxPLFictif::ThreadStart(xPLFictif* pxPLDev)
 {
     char exeName[] = "test";
+    char mode[] = "/Console";
     char confName[] = "config";
-    char* argv[2];
+    char* argv[3];
 
     argv[0]= exeName;
-    argv[1]= confName;
-    pxPLDev->ServiceStart(2, argv);
+    argv[1]= mode;
+    argv[2]= confName;
+    pxPLDev->ServiceStart(3, argv);
 }
 
 bool TestxPLFictif::Start()
@@ -37,7 +44,6 @@ bool TestxPLFictif::Start()
     string msg;
     xPL::SchemaObject sch;
 
-    remove("config");
 
     thread integrationTest(ThreadStart, &xPLDev);
     integrationTest.detach();
@@ -297,7 +303,6 @@ bool TestxPLFictif::ReStop()
     assert("end"==sch.GetType());
     Plateforms::delay(200);
 
-    remove("config");
     return true;
 }
 

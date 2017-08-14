@@ -3,7 +3,7 @@
 #include "xPLLib/Schemas/SchemaObject.h"
 #include "Plateforms/Plateforms.h"
 #include "UnitTest/UnitTest.h"
-#ifdef WIN32
+#ifndef _GLIBCXX_HAS_GTHREADS
     #include "Thread/mingw.thread.h"
 #else
     #include <thread>
