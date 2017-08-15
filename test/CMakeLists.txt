@@ -56,6 +56,12 @@ file(
 
 file(
   GLOB_RECURSE
+  SimpleSock_files
+  ../dependency/SimpleSock/*
+)
+
+file(
+  GLOB_RECURSE
   Thread_files
   ../dependency/Thread/*
 )
@@ -88,14 +94,13 @@ add_executable(
   ${SimpleFolders_files}
   ${SimpleIni_files}
   ${SimpleLog_files}
+  ${SimpleSock_files}
   ${Thread_files}
   ${UnitTest_files}
   ${StringTools_files}
   ${xPLLib_files}
   ../src/xPLFictif.cpp
   ../src/ControlExtension.cpp
-  ControlSockMock.cpp
-  SimpleSockMock.cpp
   TestxPLFictif.cpp
   main.cpp
 )
