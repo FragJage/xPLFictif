@@ -84,6 +84,8 @@ file(
   ../dependency/xPLLib/*
 )
 
+add_definitions( -DSIMPLESOCKUDP_MOCK )
+
 #Déclaration de l'exécutable
 set(EXECUTABLE_OUTPUT_PATH bin/${CMAKE_BUILD_TYPE})
 add_executable(
