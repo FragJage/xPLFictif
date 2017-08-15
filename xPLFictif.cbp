@@ -41,13 +41,17 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-std=c++11" />
 			<Add option="-Wall" />
+			<Add option="-std=c++11" />
+			<Add option="-m32" />
 			<Add option="-fexceptions" />
 			<Add option="-DWIN32" />
 			<Add directory="src" />
 			<Add directory="dependency" />
 		</Compiler>
+		<Linker>
+			<Add option="-m32" />
+		</Linker>
 		<Unit filename="dependency/Plateforms/Plateforms.cpp" />
 		<Unit filename="dependency/Plateforms/Plateforms.h" />
 		<Unit filename="dependency/SafeFunctions/SafeFunctions.cpp" />
@@ -63,6 +67,8 @@
 		<Unit filename="dependency/SimpleLog/SimpleLog.inl" />
 		<Unit filename="dependency/SimpleSock/SimpleSock.cpp" />
 		<Unit filename="dependency/SimpleSock/SimpleSock.h" />
+		<Unit filename="dependency/SimpleSock/SimpleSockUDP.cpp" />
+		<Unit filename="dependency/SimpleSock/SimpleSockUDP.h" />
 		<Unit filename="dependency/StringTools/StringTools.cpp" />
 		<Unit filename="dependency/StringTools/StringTools.h" />
 		<Unit filename="dependency/xPLLib/Address.cpp" />

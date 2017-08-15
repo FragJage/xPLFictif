@@ -9,7 +9,6 @@
     #include <thread>
 #endif
 #include "../src/xPLFictif.h"
-#include "ControlSockMock.h"
 
 
 class TestxPLFictif : public TestClass<TestxPLFictif>

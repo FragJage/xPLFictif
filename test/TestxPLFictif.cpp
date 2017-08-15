@@ -48,7 +48,7 @@ bool TestxPLFictif::Start()
     thread integrationTest(ThreadStart, &xPLDev);
     integrationTest.detach();
 
-    msg = ControlSockMock::GetLastSend(10);
+    msg = SimpleSockUDP::GetLastSend(10);
     sch.Parse(msg);
     assert("xPL Fictif"==sch.GetValue("appname"));
 
@@ -64,10 +64,10 @@ bool TestxPLFictif::StdConfig()
     schCfg.SetValue("interval", "30");
     schCfg.SetValue("newconf", "test");
     msg = schCfg.ToMessage("fragxpl-test.default", "fragxpl-fictif.default");
-    ControlSockMock::SetNextRecv(msg);
+    SimpleSockUDP::SetNextRecv(msg);
 
-    msg = ControlSockMock::GetLastSend(10);     //Pass Hbeat message
-    msg = ControlSockMock::GetLastSend(10);
+    msg = SimpleSockUDP::GetLastSend(10);     //Pass Hbeat message
+    msg = SimpleSockUDP::GetLastSend(10);
     sch.Parse(msg);
     assert("30"==sch.GetValue("interval"));
     assert("fragxpl-fictif.test"==sch.GetSource());
@@ -86,9 +86,9 @@ bool TestxPLFictif::SetAdvConfig()
     schAdvCfg.SetValue("value", "low");
     schAdvCfg.SetValue("save", "false");
     msg = schAdvCfg.ToMessage("fragxpl-test.default", "fragxpl-fictif.test");
-    ControlSockMock::SetNextRecv(msg);
+    SimpleSockUDP::SetNextRecv(msg);
 
-    msg = ControlSockMock::GetLastSend(10);
+    msg = SimpleSockUDP::GetLastSend(10);
     sch.Parse(msg);
     assert("sensor"==sch.GetClass());
     assert("basic"==sch.GetType());
@@ -100,9 +100,9 @@ bool TestxPLFictif::SetAdvConfig()
     schAdvCfg.SetValue("value", "20");
     schAdvCfg.SetValue("save", "true");
     msg = schAdvCfg.ToMessage("fragxpl-test.default", "fragxpl-fictif.test");
-    ControlSockMock::SetNextRecv(msg);
+    SimpleSockUDP::SetNextRecv(msg);
 
-    msg = ControlSockMock::GetLastSend(10);
+    msg = SimpleSockUDP::GetLastSend(10);
     sch.Parse(msg);
     assert("sensor"==sch.GetClass());
     assert("basic"==sch.GetType());
@@ -122,9 +122,9 @@ bool TestxPLFictif::FictifControl()
     schControl.SetValue("current", "25");
     schControl.SetValue("type", "temp");
     msg = schControl.ToMessage("fragxpl-test.default", "fragxpl-fictif.test");
-    ControlSockMock::SetNextRecv(msg);
+    SimpleSockUDP::SetNextRecv(msg);
 
-    msg = ControlSockMock::GetLastSend(10);
+    msg = SimpleSockUDP::GetLastSend(10);
     sch.Parse(msg);
     assert(xPL::SchemaObject::trig==sch.GetMsgType());
     assert("fictiftemp"==sch.GetValue("device"));
@@ -144,9 +144,9 @@ bool TestxPLFictif::FictifRequest()
     schSensor.SetValue("device", "fictifinput");
     schSensor.SetValue("type", "input");
     msg = schSensor.ToMessage("fragxpl-test.default", "fragxpl-fictif.test");
-    ControlSockMock::SetNextRecv(msg);
+    SimpleSockUDP::SetNextRecv(msg);
 
-    msg = ControlSockMock::GetLastSend(10);
+    msg = SimpleSockUDP::GetLastSend(10);
     sch.Parse(msg);
     assert(xPL::SchemaObject::stat==sch.GetMsgType());
     assert("fictifinput"==sch.GetValue("device"));
@@ -156,9 +156,9 @@ bool TestxPLFictif::FictifRequest()
     schSensor.SetValue("device", "fictiftemp");
     schSensor.SetValue("type", "temp");
     msg = schSensor.ToMessage("fragxpl-test.default", "fragxpl-fictif.test");
-    ControlSockMock::SetNextRecv(msg);
+    SimpleSockUDP::SetNextRecv(msg);
 
-    msg = ControlSockMock::GetLastSend(10);
+    msg = SimpleSockUDP::GetLastSend(10);
     sch.Parse(msg);
     assert(xPL::SchemaObject::stat==sch.GetMsgType());
     assert("fictiftemp"==sch.GetValue("device"));
@@ -176,9 +176,9 @@ bool TestxPLFictif::GetAdvConfig()
     schAdvCfg.SetValue("command", "request");
     schAdvCfg.SetValue("configname", "fictiftemp");
     msg = schAdvCfg.ToMessage("fragxpl-test.default", "fragxpl-fictif.test");
-    ControlSockMock::SetNextRecv(msg);
+    SimpleSockUDP::SetNextRecv(msg);
 
-    msg = ControlSockMock::GetLastSend(10);
+    msg = SimpleSockUDP::GetLastSend(10);
     sch.Parse(msg);
     assert("advanceconfig"==sch.GetClass());
     assert("current"==sch.GetType());
@@ -202,9 +202,9 @@ bool TestxPLFictif::ModifyAdvConfig()
     schAdvCfgReq.SetValue("value", "low");
     schAdvCfgReq.SetValue("save", "true");
     msg = schAdvCfgReq.ToMessage("fragxpl-test.default", "fragxpl-fictif.test");
-    ControlSockMock::SetNextRecv(msg);
+    SimpleSockUDP::SetNextRecv(msg);
 
-    msg = ControlSockMock::GetLastSend(10);
+    msg = SimpleSockUDP::GetLastSend(10);
     sch.Parse(msg);
     assert("sensor"==sch.GetClass());
     assert("basic"==sch.GetType());
@@ -214,9 +214,9 @@ bool TestxPLFictif::ModifyAdvConfig()
     schAdvCfgCur.SetValue("command", "request");
     schAdvCfgCur.SetValue("configname", "fictifinput");
     msg = schAdvCfgCur.ToMessage("fragxpl-test.default", "fragxpl-fictif.test");
-    ControlSockMock::SetNextRecv(msg);
+    SimpleSockUDP::SetNextRecv(msg);
 
-    msg = ControlSockMock::GetLastSend(10);
+    msg = SimpleSockUDP::GetLastSend(10);
     sch.Parse(msg);
     assert("advanceconfig"==sch.GetClass());
     assert("current"==sch.GetType());
@@ -238,7 +238,7 @@ bool TestxPLFictif::Stop()
     xPLDev.ServicePause(false);
     xPLDev.ServiceStop();
 
-    msg = ControlSockMock::GetLastSend(10);
+    msg = SimpleSockUDP::GetLastSend(10);
     sch.Parse(msg);
     assert("hbeat"==sch.GetClass());
     assert("end"==sch.GetType());
@@ -254,13 +254,13 @@ bool TestxPLFictif::ReStart()
     thread integrationTest(ThreadStart, &xPLDev);
     integrationTest.detach();
 
-    msg = ControlSockMock::GetLastSend(10);
+    msg = SimpleSockUDP::GetLastSend(10);
     sch.Parse(msg);
     assert(xPL::SchemaObject::trig==sch.GetMsgType());
     assert("fictifinput"==sch.GetValue("device"));
     assert("low"==sch.GetValue("current"));
 
-    msg = ControlSockMock::GetLastSend(10);
+    msg = SimpleSockUDP::GetLastSend(10);
     sch.Parse(msg);
     assert(xPL::SchemaObject::trig==sch.GetMsgType());
     assert("fictiftemp"==sch.GetValue("device"));
@@ -278,13 +278,13 @@ bool TestxPLFictif::DelAdvConfig()
     schAdvCfg.SetValue("command", "delete");
     schAdvCfg.SetValue("configname", "fictifinput");
     msg = schAdvCfg.ToMessage("fragxpl-test.default", "fragxpl-fictif.test");
-    ControlSockMock::SetNextRecv(msg);
+    SimpleSockUDP::SetNextRecv(msg);
     Plateforms::delay(500);
 
     schAdvCfg.ClearValues();
     schAdvCfg.SetValue("command", "delete");
     msg = schAdvCfg.ToMessage("fragxpl-test.default", "fragxpl-fictif.test");
-    ControlSockMock::SetNextRecv(msg);
+    SimpleSockUDP::SetNextRecv(msg);
     Plateforms::delay(500);
 
     return true;
@@ -297,7 +297,7 @@ bool TestxPLFictif::ReStop()
 
     xPLDev.ServiceStop();
 
-    msg = ControlSockMock::GetLastSend(10);
+    msg = SimpleSockUDP::GetLastSend(10);
     sch.Parse(msg);
     assert("hbeat"==sch.GetClass());
     assert("end"==sch.GetType());
