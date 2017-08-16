@@ -256,6 +256,10 @@ bool TestxPLFictif::ReStart()
 
     msg = SimpleSockUDP::GetLastSend(10);
     sch.Parse(msg);
+    assert("xPL Fictif"==sch.GetValue("appname"));
+
+    msg = SimpleSockUDP::GetLastSend(10);
+    sch.Parse(msg);
     assert(xPL::SchemaObject::trig==sch.GetMsgType());
     assert("fictifinput"==sch.GetValue("device"));
     assert("low"==sch.GetValue("current"));
